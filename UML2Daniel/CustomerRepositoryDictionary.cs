@@ -9,56 +9,56 @@ namespace UML2Daniel
     public class CustomerRepositoryDictionary
     {
         #region Instance fields
-        private Dictionary<int, Pizza> _pizza;
+        private Dictionary<string, Customer> _customer;
         #endregion
 
         #region Properties
         public int Count
         {
-            get { return _pizza.Count; }
+            get { return _customer.Count; }
         }
         #endregion
 
         #region Constructor
         public CustomerRepositoryDictionary()
         {
-            _pizza = new Dictionary<int, Pizza>();
+            _customer = new Dictionary<string, Customer>();
         }
         #endregion
 
         #region Methods
-        public void AddPizza(Pizza aPizza)
+        public void AddCustomer(Customer aCustomer)
         {
-            if (!_pizza.ContainsKey(aPizza.Number))
-                _pizza.Add(aPizza.Number, aPizza);
+            if (!_customer.ContainsKey(aCustomer.Id))
+                _customer.Add(aCustomer.Id, aCustomer);
         }
 
-        public Pizza LookupPizza(int number)
+        public Customer LookupCustomer(string id)
         {
-            if (_pizza.ContainsKey(number))
-                return _pizza[number];
-            return null;
+            if (_customer.ContainsKey(id))
+                return _customer[id];
+                    return null;
         }
 
-        public void DeletePizza(int number)
+        public void DeleteCustomer(string id)
         {
-            if (_pizza.ContainsKey(number))
-                _pizza.Remove(number);
+            if (_customer.ContainsKey(id))
+                _customer.Remove(id);
         }
 
 
-        public void PrintPizza()
+        public void PrintCustomer()
         {
-            foreach (Pizza pizza in _pizza.Values)
+            foreach (Customer customer in _customer.Values)
             {
-                Console.WriteLine(pizza); // explicit .ToString()
+                Console.WriteLine(customer); // explicit .ToString()
             }
         }
 
-        public void UpdatePizza(int number, Pizza pizzaToUpdate)
+        public void UpdateCustomer(string id, Customer customerToUpdate)
         {
-            if (_pizza.ContainsKey(number))
-                _pizza[number] = pizzaToUpdate;
+            if (_customer.ContainsKey(id))
+                _customer[id] = customerToUpdate;
         }
 
         #endregion
